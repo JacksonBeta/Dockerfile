@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Hollywood Weekly - Mobile Access</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      
+      body {
+        background-color: #0f0f10;
+        color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        background: linear-gradient(90deg, #f1f1f1 0%, #8a63e8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: #b3b3b3;
+      }
+      
+      .logo {
+        max-width: 200px;
+        margin-bottom: 2rem;
+      }
+      
+      .demo-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: linear-gradient(90deg, #8a63e8 0%, #6d4aff 100%);
+        color: white;
+        font-weight: bold;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      }
+
+      .loading {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #8a63e8;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        margin-bottom: 1rem;
+      }
+
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      .features {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        width: 100%;
+        max-width: 500px;
+      }
+      
+      .feature {
+        background: rgba(255,255,255,0.05);
+        border-radius: 12px;
+        padding: 1.2rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      .feature-icon {
+        background: #6d4aff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      
+      .feature-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: white;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      
+      .feature-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: white;
+      }
+      
+      .feature-content p {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        color: #b3b3b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hollywood Weekly</h1>
+    <p>The filmmaker distribution platform</p>
+    
+    <button id="demo-button" class="demo-button">Access Mobile Demo</button>
+    
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading demo...</p>
+    </div>
+    
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </div>
+        <div class="feature-content">
+          <h3>Direct Distribution</h3>
+          <p>Upload your films once and distribute to Google TV, Prime Video, Apple TV and more.</p>
+        </div>
+      </div>
+      
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+        </div>
+        <div class="feature-content">
+          <h3>Real-time Analytics</h3>
+          <p>Monitor your film's performance across all platforms from a single dashboard.</p>
+        </div>
+      </div>
+      
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+            <line x1="1" y1="10" x2="23" y2="10"></line>
+          </svg>
+        </div>
+        <div class="feature-content">
+          <h3>Monetize Your Content</h3>
+          <p>Generate revenue through subscriptions, pay-per-view, and ad-supported models.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const demoButton = document.getElementById('demo-button');
+        const loadingEl = document.getElementById('loading');
+        
+        demoButton.addEventListener('click', function() {
+          // Show loading state
+          demoButton.style.display = 'none';
+          loadingEl.style.display = 'flex';
+          
+          // Call the enhanced demo login API that works better for mobile
+          fetch('/api/create-demo-account', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              forceLogin: true,
+              mobileBrowser: true
+            })
+          })
+          .then(response => {
+            if (response.ok) {
+              // Success - redirect to mobile-optimized dashboard
+              window.location.href = '/mobile-dashboard';
+            } else {
+              throw new Error('Login failed');
+            }
+          })
+          .catch(error => {
+            console.error('Demo login error:', error);
+            alert('Could not access the demo. Please try again.');
+            
+            // Reset UI
+            demoButton.style.display = 'inline-block';
+            loadingEl.style.display = 'none';
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

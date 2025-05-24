@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Hollywood Weekly</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      max-width: 400px; 
+      margin: 0 auto; 
+      margin-top: 20px;
+    }
+    h1 { margin-bottom: 5px; }
+    p { 
+      font-size: 18px; 
+      font-weight: 500; 
+      margin-bottom: 20px; 
+      color: #555;
+    }
+    .input-group { margin-bottom: 10px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input { 
+      width: 100%; 
+      padding: 8px; 
+      border: 1px solid #ccc; 
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .primary {
+      background: #4a6cf7;
+      color: white;
+      border: none;
+    }
+    .secondary {
+      background: white;
+      color: #4a6cf7;
+      border: 1px solid #4a6cf7;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hollywood Weekly</h1>
+  <p>Distribute your films to major streaming platforms</p>
+  
+  <form id="login-form">
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" required>
+    </div>
+    
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+    </div>
+    
+    <button type="submit" class="primary">Login</button>
+    <button type="button" class="secondary" id="demo-btn">Try Demo Account</button>
+  </form>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Login functionality will be implemented soon');
+    });
+    
+    document.getElementById('demo-btn').addEventListener('click', function() {
+      alert('Demo account will be available soon');
+    });
+  </script>
+</body>
+</html>

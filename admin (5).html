@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Hollywood Weekly Distribution Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --sidebar-width: 250px;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background-color: #212529;
+            padding-top: 20px;
+            color: white;
+            overflow-y: auto;
+        }
+        .sidebar .navbar-brand {
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-bottom: 20px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar .nav-link {
+            padding: 10px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        .sidebar .nav-link:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .sidebar .nav-link.active {
+            color: white;
+            background-color: #0d6efd;
+        }
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            font-weight: 600;
+            padding: 15px 20px;
+        }
+        .stat-card {
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .stat-card i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .stat-card .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .stat-card .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(45deg, #0d6efd, #0093E9);
+        }
+        .bg-gradient-success {
+            background: linear-gradient(45deg, #28a745, #48BB78);
+        }
+        .bg-gradient-warning {
+            background: linear-gradient(45deg, #ffc107, #F6AD55);
+        }
+        .bg-gradient-info {
+            background: linear-gradient(45deg, #17a2b8, #76E4F7);
+        }
+        .table-responsive {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .table {
+            margin-bottom: 0;
+        }
+        .promo-banner {
+            background-color: #0d6efd;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .insight-card {
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid;
+        }
+        .insight-card.metadata {
+            border-left-color: #0d6efd;
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+        .insight-card.trending {
+            border-left-color: #28a745;
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+        .insight-card.revenue {
+            border-left-color: #ffc107;
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <a class="navbar-brand mb-4" href="#">
+            Hollywood Weekly
+        </a>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#dashboard">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#filmmakers">
+                    <i class="fas fa-film"></i> Filmmakers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#videos">
+                    <i class="fas fa-video"></i> Videos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#platforms">
+                    <i class="fas fa-tv"></i> Platforms
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#revenue">
+                    <i class="fas fa-dollar-sign"></i> Revenue
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#statements">
+                    <i class="fas fa-file-invoice-dollar"></i> Statements
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#moderation">
+                    <i class="fas fa-shield-alt"></i> Moderation
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#magazine">
+                    <i class="fas fa-book-open"></i> Magazine
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#invitations">
+                    <i class="fas fa-envelope"></i> Invitations
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#settings">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+            </li>
+            <li class="nav-item mt-4">
+                <a class="nav-link text-danger" href="index.html" id="logoutLink">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Admin Dashboard</h1>
+            <span class="badge bg-primary p-2">Admin</span>
+        </div>
+
+        <!-- Promotional Banner -->
+        <div class="promo-banner">
+            <h4 class="m-0">Your content is actively distributed across major streaming platforms, reaching millions of potential viewers worldwide</h4>
+        </div>
+
+        <!-- Filmmaker Insights Section -->
+        <h3 class="mb-3 mt-4">Filmmaker Insights</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="insight-card metadata">
+                    <h5><i class="fas fa-tags me-2"></i> Optimize Your Metadata</h5>
+                    <p>Films with complete metadata receive 42% more views. Encourage filmmakers to include detailed descriptions, accurate genres, and high-quality thumbnails.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="insight-card trending">
+                    <h5><i class="fas fa-chart-line me-2"></i> Trending Category</h5>
+                    <p>Documentary content is trending this month with a 27% increase in viewership. Consider featuring documentaries in your promotional campaigns.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="insight-card revenue">
+                    <h5><i class="fas fa-coins me-2"></i> Revenue Opportunity</h5>
+                    <p>SVOD (subscription) model is generating 3.5x more revenue than AVOD. Encourage filmmakers to consider subscription-based distribution.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="stat-card bg-gradient-primary">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-value">247</div>
+                    <div class="stat-label">Active Filmmakers</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card bg-gradient-success">
+                    <i class="fas fa-video"></i>
+                    <div class="stat-value">1,389</div>
+                    <div class="stat-label">Videos Distributed</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card bg-gradient-warning">
+                    <i class="fas fa-eye"></i>
+                    <div class="stat-value">827K</div>
+                    <div class="stat-label">Total Views</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card bg-gradient-info">
+                    <i class="fas fa-dollar-sign"></i>
+                    <div class="stat-value">$92,450</div>
+                    <div class="stat-label">Total Revenue</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Uploads -->
+        <div class="card mt-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Recent Video Uploads</span>
+                <a href="#videos" class="btn btn-sm btn-primary">View All</a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Title</th>
+                                <th>Filmmaker</th>
+                                <th>Upload Date</th>
+                                <th>Status</th>
+                                <th>Platform</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>The Last Sunrise</td>
+                                <td>David Mitchell</td>
+                                <td>May 20, 2025</td>
+                                <td><span class="badge bg-warning">Pending Review</span></td>
+                                <td>All Platforms</td>
+                            </tr>
+                            <tr>
+                                <td>Ocean's Whisper</td>
+                                <td>Sarah Johnson</td>
+                                <td>May 19, 2025</td>
+                                <td><span class="badge bg-success">Approved</span></td>
+                                <td>Google TV, Prime Video</td>
+                            </tr>
+                            <tr>
+                                <td>Desert Mirage</td>
+                                <td>Michael Brown</td>
+                                <td>May 18, 2025</td>
+                                <td><span class="badge bg-info">Processing</span></td>
+                                <td>Apple TV, Peacock</td>
+                            </tr>
+                            <tr>
+                                <td>Urban Tales</td>
+                                <td>Jennifer Parker</td>
+                                <td>May 17, 2025</td>
+                                <td><span class="badge bg-success">Approved</span></td>
+                                <td>All Platforms</td>
+                            </tr>
+                            <tr>
+                                <td>The Silent Echo</td>
+                                <td>Robert Williams</td>
+                                <td>May 16, 2025</td>
+                                <td><span class="badge bg-danger">Rejected</span></td>
+                                <td>N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Platform Performance -->
+        <div class="card mt-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Platform Performance</span>
+                <a href="#platforms" class="btn btn-sm btn-primary">View Details</a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Platform</th>
+                                <th>Active Videos</th>
+                                <th>Views (Last 30 Days)</th>
+                                <th>Revenue (Last 30 Days)</th>
+                                <th>Avg. Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Google TV</td>
+                                <td>843</td>
+                                <td>127,845</td>
+                                <td>$15,320</td>
+                                <td>4.7/5</td>
+                            </tr>
+                            <tr>
+                                <td>Prime Video</td>
+                                <td>651</td>
+                                <td>98,631</td>
+                                <td>$12,180</td>
+                                <td>4.5/5</td>
+                            </tr>
+                            <tr>
+                                <td>Apple TV</td>
+                                <td>524</td>
+                                <td>76,392</td>
+                                <td>$9,870</td>
+                                <td>4.8/5</td>
+                            </tr>
+                            <tr>
+                                <td>Peacock</td>
+                                <td>412</td>
+                                <td>65,128</td>
+                                <td>$7,450</td>
+                                <td>4.3/5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

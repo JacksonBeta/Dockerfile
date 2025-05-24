@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hollywood Weekly Distribution Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Colorful background elements */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .bg-circle-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #ff00cc, #3333ff);
+            top: -200px;
+            left: -150px;
+            animation: float 20s ease-in-out infinite alternate;
+        }
+        
+        .bg-circle-2 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #4a6cf7, #00ffcc);
+            bottom: -200px;
+            right: -150px;
+            animation: float 25s ease-in-out infinite alternate-reverse;
+        }
+        
+        .bg-circle-3 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #ffcc00, #ff6600);
+            top: 50%;
+            left: 30%;
+            animation: float 18s ease-in-out infinite alternate;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(50px, 50px) scale(1.1);
+            }
+        }
+        
+        .split-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .login-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            position: relative;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        
+        .background-panel {
+            flex: 1.5;
+            position: relative;
+            overflow: hidden;
+            background-color: #000000;
+        }
+        
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Logo circle in top left */
+        .circular-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(74, 108, 247, 0.5);
+            border: 3px solid #4a6cf7;
+            z-index: 10;
+        }
+        
+        .circular-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            color: white;
+        }
+        
+        .contact-info {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .contact-phone {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 5px 0;
+            color: white;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo-image {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #4a6cf7, #00ffcc);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-image i {
+            font-size: 35px;
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #4a6cf7, #00ffcc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 400;
+        }
+        
+        .welcome-text {
+            margin-bottom: 40px;
+        }
+        
+        .welcome-text h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .welcome-text p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #4a6cf7;
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+        
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-custom {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-right: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .checkbox-custom:checked {
+            background-color: #4a6cf7;
+            border-color: #4a6cf7;
+        }
+        
+        .checkbox-custom:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+            color: white;
+        }
+        
+        .forgot-password {
+            color: #4a6cf7;
+            text-decoration: none;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #4a6cf7, #00ffcc);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .login-button i {
+            margin-right: 8px;
+        }
+        
+        .or-divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .divider-text {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+        
+        .social-login {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .social-button {
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .social-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-button i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .register-now {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .register-link {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .register-link:hover {
+            text-decoration: underline;
+        }
+        
+        .platform-highlights {
+            margin-bottom: 40px;
+        }
+        
+        .platform-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #4a6cf7, #00ffcc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .platform-description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #4a6cf7, #00ffcc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .feature-icon i {
+            color: white;
+            font-size: 14px;
+        }
+        
+        .feature-text h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .feature-text p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 992px) {
+            .split-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .login-panel {
+                padding: 30px;
+            }
+            
+            .background-panel {
+                display: none;
+            }
+            
+            .social-login {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .login-panel {
+                padding: 20px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .logo-image {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+            
+            .logo-text h1 {
+                font-size: 24px;
+            }
+            
+            .contact-info {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 20px;
+                align-items: flex-start;
+            }
+            
+            .social-login {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Colorful background elements -->
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+    <div class="bg-circle bg-circle-3"></div>
+    
+    <!-- Circular logo in top left -->
+    <div class="circular-logo">
+        <img src="/assets/hw-logo.jpeg" alt="Hollywood Weekly Logo">
+    </div>
+    
+    <div class="split-container">
+        <div class="login-panel">
+            <div class="contact-info">
+                <p>Contact Us:</p>
+                <div class="contact-phone">(323) 456-5004</div>
+                <p>info@hollywoodweekly.tv</p>
+            </div>
+            
+            <div class="logo-container">
+                <div class="logo-text">
+                    <h1>Hollywood Weekly</h1>
+                    <p>Distribution Platform</p>
+                </div>
+            </div>
+            
+            <div class="welcome-text">
+                <h2>Welcome back</h2>
+                <p>Login to your account to continue your film distribution journey</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" class="checkbox-custom">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="login-button">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+            
+            <div class="or-divider">
+                <div class="divider-line"></div>
+                <div class="divider-text">OR</div>
+                <div class="divider-line"></div>
+            </div>
+            
+            <div class="social-login">
+                <button class="social-button">
+                    <i class="fab fa-google"></i> Login with Google
+                </button>
+                <button class="social-button">
+                    <i class="fab fa-apple"></i> Login with Apple
+                </button>
+            </div>
+            
+            <div class="register-now">
+                Don't have an account? <a href="./src/pages/auth-page.tsx?tab=register" class="register-link">Register Now</a>
+            </div>>
+        </div>
+        
+        <div class="background-panel">
+            <div class="background-image"></div>
+            <div class="overlay">
+                <div class="platform-highlights">
+                    <h2 class="platform-title">Distribute Your Films Globally</h2>
+                    <p class="platform-description">Join thousands of independent filmmakers who are reaching global audiences through the Hollywood Weekly Distribution Platform.</p>
+                    
+                    <!-- Video Showcase -->
+                    <div style="margin-bottom: 30px;">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                            <iframe 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                                src="https://www.youtube.com/embed/vBvmRgmSMnk" 
+                                title="Hollywood Weekly Distribution Platform" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-tv"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Major Platform Distribution</h3>
+                                <p>Connect directly with Google TV, Prime Video, Peacock, Apple TV and more.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Multiple Revenue Models</h3>
+                                <p>Choose from subscription (SVOD), pay-per-view (TVOD), or ad-supported (AVOD) models.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Comprehensive Analytics</h3>
+                                <p>Track performance across all platforms with our detailed analytics dashboard.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Automated Statements</h3>
+                                <p>Receive monthly revenue statements and transparent payment processing.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Form submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    
+                    // For demo purposes
+                    if (email === 'admin@example.com' && password === 'admin2025') {
+                        window.location.href = 'dashboard.html';
+                    } else if (email === 'filmmaker@example.com' && password === 'film2025') {
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        // API call would be here in production
+                        alert('Invalid credentials. Please try again.');
+                    }
+                });
+            }
+            
+            // Initialize subscription option selection
+            const subscriptionOptions = document.querySelectorAll('.subscription-option');
+            const selectedPlanInput = document.getElementById('selectedPlan');
+            
+            if (subscriptionOptions && subscriptionOptions.length > 0 && selectedPlanInput) {
+                subscriptionOptions.forEach(option => {
+                    option.addEventListener('click', function() {
+                        // Remove selected class from all options
+                        subscriptionOptions.forEach(opt => opt.classList.remove('selected'));
+                        
+                        // Add selected class to clicked option
+                        this.classList.add('selected');
+                        
+                        // Update hidden input value
+                        selectedPlanInput.value = this.dataset.plan;
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
