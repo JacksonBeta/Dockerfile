@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copyright Registration - Hollywood Weekly</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html, body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #333;
+    }
+    
+    .logo {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .logo h1 {
+      color: #4a6cf7;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    
+    .logo p {
+      color: #aaa;
+      font-size: 14px;
+    }
+    
+    .contact {
+      text-align: right;
+    }
+    
+    .contact p {
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+    
+    .contact .phone {
+      color: #4a6cf7;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .page-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .page-title h2 {
+      color: #4a6cf7;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    .page-title p {
+      color: #ccc;
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    .card h3 {
+      color: #4a6cf7;
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .card p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+      color: #ddd;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 4px;
+      border: 1px solid #333;
+      background-color: #252525;
+      color: white;
+      font-size: 16px;
+    }
+    
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #3a5ce5;
+    }
+    
+    .btn-full {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .steps {
+      list-style: none;
+      counter-reset: steps;
+      margin-bottom: 30px;
+    }
+    
+    .steps li {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 50px;
+      counter-increment: steps;
+    }
+    
+    .steps li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 36px;
+      height: 36px;
+      background-color: #4a6cf7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .steps h4 {
+      color: #4a6cf7;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    
+    .steps p {
+      color: #ccc;
+      line-height: 1.5;
+    }
+    
+    .copyright-code {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #252525;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 30px 0;
+      letter-spacing: 2px;
+      display: none;
+    }
+    
+    .result-box {
+      background-color: #252525;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+      display: none;
+    }
+    
+    .result-title {
+      color: #4a6cf7;
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .result-text {
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    
+    .result-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .code-copy {
+      cursor: pointer;
+      color: #4a6cf7;
+      background: none;
+      border: none;
+      font-size: 18px;
+      margin-left: 10px;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #4a6cf7;
+      text-decoration: none;
+    }
+    
+    .back-link i {
+      margin-right: 5px;
+    }
+    
+    footer {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      text-align: center;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <h1>Hollywood Weekly</h1>
+        <p>Distribution Platform</p>
+      </div>
+      <div class="contact">
+        <p>Contact Us:</p>
+        <p class="phone">(323) 456-5004</p>
+      </div>
+    </header>
+    
+    <div class="page-title">
+      <h2>Copyright Registration</h2>
+      <p>Register your film's copyright through our streamlined process for US Copyright Office submission</p>
+    </div>
+    
+    <div class="main-content">
+      <div class="card">
+        <h3>Generate Registration Code</h3>
+        <p>Complete the form below to generate your unique copyright registration code. This code will be used to verify your film's processing through the Hollywood Weekly distribution platform when submitting to the US Copyright Office.</p>
+        
+        <form id="copyrightForm">
+          <div class="form-group">
+            <label for="filmTitle">Film Title</label>
+            <input type="text" id="filmTitle" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="filmmaker">Filmmaker/Author Name</label>
+            <input type="text" id="filmmaker" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="description">Film Description</label>
+            <textarea id="description" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-full">Generate Copyright Code</button>
+        </form>
+        
+        <div class="result-box" id="resultBox">
+          <div class="result-title">Your Copyright Registration Code:</div>
+          <div class="copyright-code" id="copyrightCode">
+            HW-COPYRIGHT-ABC123-DEF456
+            <button class="code-copy" id="copyBtn" title="Copy to clipboard">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+          <div class="result-text">
+            Your registration code has been generated. You can use this code when submitting your copyright application to the US Copyright Office as proof of distribution through the Hollywood Weekly platform.
+          </div>
+          <div class="result-actions">
+            <button class="btn" id="sendEmailBtn">Send to Email</button>
+            <button class="btn" id="downloadPdfBtn">Download PDF</button>
+          </div>
+        </div>
+        
+        <a href="updated-index.html" class="back-link">
+          <i class="fas fa-arrow-left"></i> Back to Main Page
+        </a>
+      </div>
+      
+      <div class="card">
+        <h3>Copyright Registration Process</h3>
+        
+        <ul class="steps">
+          <li>
+            <h4>Complete Our Form</h4>
+            <p>Fill out the copyright registration form with your film details and contact information.</p>
+          </li>
+          <li>
+            <h4>Receive Your Registration Code</h4>
+            <p>We'll generate a unique Hollywood Weekly copyright registration code for your film.</p>
+          </li>
+          <li>
+            <h4>Visit the US Copyright Office</h4>
+            <p>Go to <a href="https://copyright.gov" style="color: #4a6cf7;">copyright.gov</a> and begin the registration process for your film.</p>
+          </li>
+          <li>
+            <h4>Include Your Registration Code</h4>
+            <p>When submitting your application, include your Hollywood Weekly registration code in the "Additional Information" section.</p>
+          </li>
+          <li>
+            <h4>Complete Copyright Registration</h4>
+            <p>Finish the US Copyright Office application process and pay the required fee to secure your copyright.</p>
+          </li>
+        </ul>
+        
+        <p>For assistance with the copyright registration process, contact our support team at:</p>
+        <p style="color: #4a6cf7; font-weight: bold; margin-top: 10px;">(323) 456-5004</p>
+      </div>
+    </div>
+    
+    <footer>
+      &copy; 2025 Hollywood Weekly Distribution Platform. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('copyrightForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get input values
+      const filmTitle = document.getElementById('filmTitle').value;
+      const filmmaker = document.getElementById('filmmaker').value;
+      
+      // Generate a random code
+      const randomPart1 = Math.random().toString(36).substring(2, 7).toUpperCase();
+      const randomPart2 = Math.random().toString(36).substring(2, 7).toUpperCase();
+      const randomPart3 = Math.random().toString(36).substring(2, 7).toUpperCase();
+      
+      const copyrightCode = `HW-COPYRIGHT-${randomPart1}-${randomPart2}`;
+      
+      // Display the code and result box
+      document.getElementById('copyrightCode').textContent = copyrightCode;
+      document.getElementById('resultBox').style.display = 'block';
+      
+      // Scroll to the result box
+      document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    document.getElementById('copyBtn').addEventListener('click', function() {
+      const codeText = document.getElementById('copyrightCode').textContent.trim();
+      navigator.clipboard.writeText(codeText).then(function() {
+        alert('Copyright code copied to clipboard!');
+      });
+    });
+    
+    document.getElementById('sendEmailBtn').addEventListener('click', function() {
+      const email = document.getElementById('email').value;
+      alert(`Copyright code would be sent to ${email} in a production environment.`);
+    });
+    
+    document.getElementById('downloadPdfBtn').addEventListener('click', function() {
+      const filmTitle = document.getElementById('filmTitle').value;
+      const filmmaker = document.getElementById('filmmaker').value;
+      const code = document.getElementById('copyrightCode').textContent.trim();
+      
+      alert(`PDF certificate with film title "${filmTitle}" by ${filmmaker} and code ${code} would be generated and downloaded in a production environment.`);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hollywood Weekly Platform</title>
+    <style>
+        body {
+            background-color: #000000 !important;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .logo h1 {
+            color: #4a6cf7;
+            font-size: 28px;
+            margin: 0;
+        }
+        
+        .logo p {
+            color: #aaa;
+            margin: 5px 0 0;
+        }
+        
+        .contact {
+            text-align: right;
+        }
+        
+        .contact p {
+            margin: 5px 0;
+        }
+        
+        .phone {
+            color: #4a6cf7;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        nav {
+            background-color: #111;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            flex: 1;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 15px 0;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #222;
+            color: #4a6cf7;
+        }
+        
+        .nav-links a.active {
+            background-color: #4a6cf7;
+            color: #fff;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: #111;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .card h2 {
+            color: #4a6cf7;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #222;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4a6cf7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .credentials {
+            text-align: center;
+            margin-top: 20px;
+            color: #aaa;
+        }
+        
+        .credentials strong {
+            color: #4a6cf7;
+        }
+        
+        .platforms {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .platform {
+            display: flex;
+            align-items: center;
+            background-color: #222;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .platform i {
+            font-size: 24px;
+            color: #4a6cf7;
+            margin-right: 15px;
+        }
+        
+        .pricing {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .price {
+            background-color: #222;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .price-header {
+            background-color: #4a6cf7;
+            padding: 10px;
+            font-weight: bold;
+        }
+        
+        .price-amount {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px 0 5px;
+        }
+        
+        .price-period {
+            color: #aaa;
+            padding-bottom: 15px;
+        }
+        
+        .price-features {
+            list-style: none;
+            text-align: left;
+            padding: 0 15px 15px;
+        }
+        
+        .price-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .price-features li:before {
+            content: "✓ ";
+            color: #4a6cf7;
+        }
+        
+        .links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #222;
+            padding: 12px;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .link i {
+            margin-right: 10px;
+            color: #4a6cf7;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact {
+                text-align: left;
+                margin-top: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+            }
+            
+            .platforms, .pricing, .links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Hollywood Weekly</h1>
+                <p>Distribution Platform</p>
+            </div>
+            <div class="contact">
+                <p>Contact Us:</p>
+                <p class="phone">(323) 456-5004</p>
+            </div>
+        </header>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#" class="active">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">FEATURES</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
+        
+        <div class="grid">
+            <div>
+                <div class="card">
+                    <h2>Platform Login</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter password" required>
+                        </div>
+                        <button type="submit" class="login-btn">Login</button>
+                    </form>
+                    <div class="credentials">
+                        For demo access use:<br>
+                        <strong>Admin:</strong> admin / admin2025<br>
+                        <strong>Filmmaker:</strong> filmmaker / film2025<br><br>
+                        <strong>Direct Access:</strong><br>
+                        <a href="admin.html" style="color: #4a6cf7; text-decoration: underline;">Go to Admin Dashboard</a><br>
+                        <a href="filmmaker.html" style="color: #4a6cf7; text-decoration: underline;">Go to Filmmaker Dashboard</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Platform Access</h2>
+                    <div class="links">
+                        <a href="admin.html" class="link">
+                            <i class="fas fa-user-shield"></i> Admin Demo
+                        </a>
+                        <a href="filmmaker.html" class="link">
+                            <i class="fas fa-film"></i> Filmmaker Demo
+                        </a>
+                        <a href="mobile-demo.html" class="link">
+                            <i class="fas fa-mobile-alt"></i> Mobile Demo
+                        </a>
+                        <a href="copyright.html" class="link">
+                            <i class="fas fa-copyright"></i> Copyright Registration
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="card">
+                    <h2>Streaming Platforms</h2>
+                    <div class="platforms">
+                        <div class="platform">
+                            <i class="fab fa-google"></i>
+                            <div>Google TV</div>
+                        </div>
+                        <div class="platform">
+                            <i class="fab fa-amazon"></i>
+                            <div>Prime Video</div>
+                        </div>
+                        <div class="platform">
+                            <i class="fab fa-apple"></i>
+                            <div>Apple TV</div>
+                        </div>
+                        <div class="platform">
+                            <i class="fas fa-tv"></i>
+                            <div>Peacock</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Distribution Plans</h2>
+                    <div class="pricing">
+                        <div class="price">
+                            <div class="price-header">Basic</div>
+                            <div class="price-amount">$99</div>
+                            <div class="price-period">for 3 months</div>
+                            <ul class="price-features">
+                                <li>Distribution to all platforms</li>
+                                <li>Basic analytics</li>
+                                <li>Revenue tracking</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="price">
+                            <div class="price-header">Premium</div>
+                            <div class="price-amount">$599</div>
+                            <div class="price-period">for 6 months</div>
+                            <ul class="price-features">
+                                <li>Priority distribution</li>
+                                <li>Advanced analytics</li>
+                                <li>Promotional features</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="price">
+                            <div class="price-header">Professional</div>
+                            <div class="price-amount">$999</div>
+                            <div class="price-period">for 12 months</div>
+                            <ul class="price-features">
+                                <li>Featured placement</li>
+                                <li>Marketing support</li>
+                                <li>Revenue maximization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Legal Information</h2>
+                    <div class="links">
+                        <a href="terms.html" class="link">
+                            <i class="fas fa-file-contract"></i> Terms of Service
+                        </a>
+                        <a href="privacy.html" class="link">
+                            <i class="fas fa-shield-alt"></i> Privacy Policy
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            &copy; 2025 Hollywood Weekly Distribution Platform. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
+            
+            if (username === 'admin' && password === 'admin2025') {
+                window.location.href = 'admin.html';
+            } else if (username === 'filmmaker' && password === 'film2025') {
+                window.location.href = 'filmmaker.html';
+            } else {
+                alert('Invalid username or password. Try using admin/admin2025 or filmmaker/film2025');
+            }
+        });
+        
+        // Pre-fill the form with demo credentials to make testing easier
+        document.getElementById('username').value = 'admin';
+        document.getElementById('password').value = 'admin2025';
+    </script>
+</body>
+</html>

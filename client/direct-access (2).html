@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Dashboard Access</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #111;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #4a6cf7;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #ddd;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .access-button {
+            display: block;
+            padding: 18px 20px;
+            background-color: #1a1a1a;
+            border: 2px solid #4a6cf7;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .access-button:hover {
+            background-color: #4a6cf7;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .access-button i {
+            margin-right: 10px;
+        }
+        
+        .note {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 30px;
+        }
+        
+        .phone {
+            color: #4a6cf7;
+            font-weight: bold;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #4a6cf7;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hollywood Weekly Platform Dashboards</h1>
+        <p>Access the admin and filmmaker dashboards directly with the links below:</p>
+        
+        <div class="button-container">
+            <a href="admin.html" class="access-button">
+                <i class="fas fa-user-shield"></i> Admin Dashboard
+            </a>
+            
+            <a href="filmmaker.html" class="access-button">
+                <i class="fas fa-film"></i> Filmmaker Dashboard
+            </a>
+            
+            <a href="mobile-demo.html" class="access-button">
+                <i class="fas fa-mobile-alt"></i> Mobile Demo
+            </a>
+            
+            <a href="copyright.html" class="access-button">
+                <i class="fas fa-copyright"></i> Copyright Registration
+            </a>
+        </div>
+        
+        <p class="note">For questions or assistance, please contact us at <span class="phone">(323) 456-5004</span></p>
+        
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Main Page
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile View - Hollywood Weekly</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html, body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    
+    .container {
+      padding: 20px;
+      max-width: 100%;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #333;
+    }
+    
+    .logo h1 {
+      color: #4a6cf7;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    
+    .logo p {
+      color: #aaa;
+      font-size: 14px;
+    }
+    
+    .contact {
+      margin-top: 15px;
+    }
+    
+    .contact .phone {
+      color: #4a6cf7;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    
+    .card h2 {
+      color: #4a6cf7;
+      margin-bottom: 15px;
+      font-size: 20px;
+      text-align: center;
+    }
+    
+    .video-container {
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      position: relative;
+      margin-bottom: 15px;
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 6px;
+    }
+    
+    .login-form {
+      width: 100%;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #ddd;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background-color: #252525;
+      color: #fff;
+      font-size: 16px;
+    }
+    
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .btn-primary {
+      background-color: #4a6cf7;
+      color: white;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid #4a6cf7;
+      color: #4a6cf7;
+    }
+    
+    .plan {
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .plan-header {
+      background-color: #252525;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: #4a6cf7;
+    }
+    
+    .plan-body {
+      background-color: #1e1e1e;
+      padding: 15px;
+    }
+    
+    .plan-price {
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    
+    .plan-duration {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    
+    .plan-features {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+    
+    .plan-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid #333;
+    }
+    
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+    
+    .plan-features li:before {
+      content: "✓ ";
+      color: #4a6cf7;
+    }
+    
+    .section-title {
+      color: #4a6cf7;
+      margin: 25px 0 15px;
+      text-align: center;
+      font-size: 20px;
+    }
+    
+    .platform-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .platform-item {
+      background-color: #252525;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+    
+    .platform-icon {
+      font-size: 24px;
+      color: #4a6cf7;
+      margin-bottom: 5px;
+    }
+    
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1a1a1a;
+      display: flex;
+      justify-content: space-around;
+      padding: 15px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    }
+    
+    .nav-item {
+      text-align: center;
+    }
+    
+    .nav-icon {
+      font-size: 20px;
+      color: #4a6cf7;
+      margin-bottom: 5px;
+    }
+    
+    .nav-text {
+      font-size: 12px;
+      color: #ccc;
+    }
+    
+    .demo-note {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background-color: #4a6cf7;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      z-index: 1000;
+    }
+    
+    /* Add padding to bottom to account for fixed nav */
+    .page-padding {
+      padding-bottom: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-note">Mobile Demo View</div>
+  
+  <div class="container">
+    <header>
+      <div class="logo">
+        <h1>Hollywood Weekly</h1>
+        <p>Distribution Platform</p>
+      </div>
+      <div class="contact">
+        <p>Contact: <span class="phone">(323) 456-5004</span></p>
+      </div>
+    </header>
+    
+    <div class="card">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/vBvmRgmSMnk" allowfullscreen></iframe>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>Filmmaker Login</h2>
+      <div class="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter username" value="filmmaker">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" value="film2025">
+        </div>
+        <button class="btn btn-primary" id="loginBtn">Log In</button>
+        <button class="btn btn-outline">Register</button>
+      </div>
+    </div>
+    
+    <h2 class="section-title">Distribution Plans</h2>
+    
+    <div class="plan">
+      <div class="plan-header">Basic Plan</div>
+      <div class="plan-body">
+        <div class="plan-price">$99</div>
+        <div class="plan-duration">for 3 months</div>
+        <ul class="plan-features">
+          <li>Distribution to all platforms</li>
+          <li>Basic analytics</li>
+          <li>Revenue tracking</li>
+        </ul>
+        <button class="btn btn-primary">Select Plan</button>
+      </div>
+    </div>
+    
+    <div class="plan">
+      <div class="plan-header">Premium Plan</div>
+      <div class="plan-body">
+        <div class="plan-price">$599</div>
+        <div class="plan-duration">for 6 months</div>
+        <ul class="plan-features">
+          <li>Priority distribution</li>
+          <li>Advanced analytics</li>
+          <li>Promotional features</li>
+        </ul>
+        <button class="btn btn-primary">Select Plan</button>
+      </div>
+    </div>
+    
+    <div class="plan">
+      <div class="plan-header">Professional Plan</div>
+      <div class="plan-body">
+        <div class="plan-price">$999</div>
+        <div class="plan-duration">for 12 months</div>
+        <ul class="plan-features">
+          <li>Featured placement</li>
+          <li>Marketing support</li>
+          <li>Revenue maximization</li>
+        </ul>
+        <button class="btn btn-primary">Select Plan</button>
+      </div>
+    </div>
+    
+    <h2 class="section-title">Streaming Platforms</h2>
+    
+    <div class="platform-list">
+      <div class="platform-item">
+        <div class="platform-icon"><i class="fab fa-google"></i></div>
+        <div>Google TV</div>
+      </div>
+      <div class="platform-item">
+        <div class="platform-icon"><i class="fab fa-amazon"></i></div>
+        <div>Prime Video</div>
+      </div>
+      <div class="platform-item">
+        <div class="platform-icon"><i class="fab fa-apple"></i></div>
+        <div>Apple TV</div>
+      </div>
+      <div class="platform-item">
+        <div class="platform-icon"><i class="fas fa-tv"></i></div>
+        <div>Peacock</div>
+      </div>
+    </div>
+    
+    <div class="page-padding"></div>
+  </div>
+  
+  <div class="bottom-nav">
+    <div class="nav-item">
+      <div class="nav-icon"><i class="fas fa-home"></i></div>
+      <div class="nav-text">Home</div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-icon"><i class="fas fa-film"></i></div>
+      <div class="nav-text">My Films</div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-icon"><i class="fas fa-chart-bar"></i></div>
+      <div class="nav-text">Analytics</div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-icon"><i class="fas fa-user"></i></div>
+      <div class="nav-text">Profile</div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginBtn').addEventListener('click', function() {
+      alert('Mobile login successful! This is a mobile demo view of the filmmaker dashboard.');
+    });
+  </script>
+</body>
+</html>
