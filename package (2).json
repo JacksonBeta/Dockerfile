@@ -1,0 +1,16 @@
+{
+  "name": "hollywood-weekly-platform",
+  "version": "1.0.0",
+  "description": "Hollywood Weekly Distribution Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "mkdir -p dist && cp index.html dist/"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
